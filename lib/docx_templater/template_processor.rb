@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module DocxTemplater
   class TemplateProcessor
     attr_reader :data, :escape_html
