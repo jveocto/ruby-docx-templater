@@ -10,6 +10,7 @@ module DocxTemplater
     end
 
     def render(document)
+      document.encode!('UTF-8')
       data.each do |key, value|
         if value.class == Array
           document = enter_multiple_values(document, key)
@@ -21,9 +22,6 @@ module DocxTemplater
           p safe(value).encoding
           regex = "$#{key.to_s.upcase.encode('UTF-8')}$"
           p regex.encoding
-
-          regex.encode!('UTF-8')
-          document.encode!('UTF-8')
           document.gsub!(regex, safe(value).encode('UTF-8'))
         end
       end
