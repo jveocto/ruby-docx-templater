@@ -20,9 +20,9 @@ module DocxTemplater
           p key.to_s.encoding
           p value.encoding
           p safe(value).encoding
-          regex = "$#{key.to_s.upcase.encode('UTF-8')}$"
+          regex = "$#{key.to_s.upcase}$"
           p regex.encoding
-          document.gsub!(regex, safe(value).encode('UTF-8'))
+          document.gsub!(regex, safe(value))
         end
       end
       document
