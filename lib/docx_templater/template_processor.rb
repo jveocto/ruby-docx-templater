@@ -27,9 +27,9 @@ module DocxTemplater
 
     def safe(text)
       if escape_html
-        text.to_s.gsub('&', '&amp;').gsub('>', '&gt;').gsub('<', '&lt;')
+        text.to_s.gsub('&', '&amp;').gsub('>', '&gt;').gsub('<', '&lt;').encode!('UTF-8')
       else
-        text.to_s
+        text.to_s.encode!('UTF-8')
       end
     end
 
