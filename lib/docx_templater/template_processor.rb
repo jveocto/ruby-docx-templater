@@ -18,7 +18,6 @@ module DocxTemplater
         else
           p document.encoding
           p key.to_s.encoding
-          p value.encoding
           p safe(value).encoding
           regex = "$#{key.to_s.upcase}$"
           p regex.encoding
