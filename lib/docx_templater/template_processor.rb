@@ -15,9 +15,9 @@ module DocxTemplater
           document = enter_multiple_values(document, key)
           document.gsub!("#SUM:#{key.to_s.upcase}#", value.count.to_s)
         else
-          regex = "$#{key.to_s.upcase}$"
+          regex = "$#{key.to_s.upcase.encode!('UTF-8')}$"
           regex.encode!('UTF-8')
-          document.gsub!(regex, safe(value))
+          document.gsub!(regex, safe(value).encode!('UTF-8'))
         end
       end
       document
@@ -27,9 +27,9 @@ module DocxTemplater
 
     def safe(text)
       if escape_html
-        text.to_s.gsub('&', '&amp;').gsub('>', '&gt;').gsub('<', '&lt;').encode!('UTF-8')
+        text.to_s.gsub('&', '&amp;').gsub('>', '&gt;').gsub('<', '&lt;')
       else
-        text.to_s.encode!('UTF-8')
+        text.to_s
       end
     end
 
